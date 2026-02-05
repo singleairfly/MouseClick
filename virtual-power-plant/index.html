@@ -72,16 +72,6 @@
                             </div>
                             <span class="energy-label">储能电量</span>
                         </div>
-                        <div class="energy-card">
-                            <div class="energy-icon income">
-                                <i class="ri-money-cny-circle-fill"></i>
-                            </div>
-                            <div class="energy-data">
-                                <span class="energy-value">67.6</span>
-                                <span class="energy-unit">元</span>
-                            </div>
-                            <span class="energy-label">今日收益</span>
-                        </div>
                     </div>
                 </div>
 
@@ -141,45 +131,11 @@
                             </div>
                             <span>需求响应</span>
                         </div>
-                        <div class="action-item" onclick="showPage('income')">
-                            <div class="action-icon income">
-                                <i class="ri-wallet-3-line"></i>
+                        <div class="action-item" onclick="showPage('profile')">
+                            <div class="action-icon profile">
+                                <i class="ri-user-line"></i>
                             </div>
-                            <span>收益中心</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 调度任务 -->
-                <div class="section">
-                    <div class="section-header">
-                        <h3>调度任务</h3>
-                        <span class="view-more">全部 <i class="ri-arrow-right-s-line"></i></span>
-                    </div>
-                    <div class="task-list">
-                        <div class="task-item">
-                            <div class="task-status active"></div>
-                            <div class="task-info">
-                                <span class="task-name">削峰响应</span>
-                                <span class="task-time">14:00 - 16:00</span>
-                            </div>
-                            <div class="task-reward">+32元</div>
-                        </div>
-                        <div class="task-item">
-                            <div class="task-status pending"></div>
-                            <div class="task-info">
-                                <span class="task-name">填谷调度</span>
-                                <span class="task-time">22:00 - 06:00</span>
-                            </div>
-                            <div class="task-reward">+18元</div>
-                        </div>
-                        <div class="task-item">
-                            <div class="task-status completed"></div>
-                            <div class="task-info">
-                                <span class="task-name">紧急响应</span>
-                                <span class="task-time">已完成</span>
-                            </div>
-                            <div class="task-reward">+45元</div>
+                            <span>用户中心</span>
                         </div>
                     </div>
                 </div>
@@ -654,144 +610,6 @@
             </div>
         </div>
 
-        <!-- 收益统计页面 -->
-        <div id="page-income" class="page">
-            <div class="header">
-                <div class="header-left" onclick="showPage('home')">
-                    <i class="ri-arrow-left-line"></i>
-                </div>
-                <div class="header-title">收益中心</div>
-                <div class="header-right">
-                    <i class="ri-download-2-line"></i>
-                </div>
-            </div>
-            
-            <div class="content">
-                <!-- 总收益卡片 -->
-                <div class="income-hero-card">
-                    <div class="income-label">累计总收益</div>
-                    <div class="income-total">
-                        <span class="currency">¥</span>
-                        <span class="amount">12,568.90</span>
-                    </div>
-                    <div class="income-breakdown">
-                        <div class="breakdown-item">
-                            <span class="breakdown-label">售电收入</span>
-                            <span class="breakdown-value">¥8,234.50</span>
-                        </div>
-                        <div class="breakdown-divider"></div>
-                        <div class="breakdown-item">
-                            <span class="breakdown-label">响应收入</span>
-                            <span class="breakdown-value">¥4,334.40</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 收益趋势 -->
-                <div class="section">
-                    <div class="section-header">
-                        <h3>收益趋势</h3>
-                        <div class="period-selector">
-                            <span class="active">周</span>
-                            <span>月</span>
-                            <span>年</span>
-                        </div>
-                    </div>
-                    <div class="income-chart-card">
-                        <div class="bar-chart">
-                            <div class="bar-item">
-                                <div class="bar" style="height: 60%;"></div>
-                                <span class="bar-label">周一</span>
-                            </div>
-                            <div class="bar-item">
-                                <div class="bar" style="height: 80%;"></div>
-                                <span class="bar-label">周二</span>
-                            </div>
-                            <div class="bar-item">
-                                <div class="bar" style="height: 45%;"></div>
-                                <span class="bar-label">周三</span>
-                            </div>
-                            <div class="bar-item">
-                                <div class="bar" style="height: 90%;"></div>
-                                <span class="bar-label">周四</span>
-                            </div>
-                            <div class="bar-item active">
-                                <div class="bar" style="height: 75%;"></div>
-                                <span class="bar-label">周五</span>
-                            </div>
-                            <div class="bar-item">
-                                <div class="bar" style="height: 50%;"></div>
-                                <span class="bar-label">周六</span>
-                            </div>
-                            <div class="bar-item">
-                                <div class="bar" style="height: 35%;"></div>
-                                <span class="bar-label">周日</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 收益明细 -->
-                <div class="section">
-                    <div class="section-header">
-                        <h3>收益明细</h3>
-                        <span class="view-more">全部 <i class="ri-arrow-right-s-line"></i></span>
-                    </div>
-                    <div class="income-list">
-                        <div class="income-item">
-                            <div class="income-icon sell">
-                                <i class="ri-arrow-up-circle-fill"></i>
-                            </div>
-                            <div class="income-info">
-                                <span class="income-title">售电收入</span>
-                                <span class="income-time">今日 14:30 · 67.5 kWh</span>
-                            </div>
-                            <span class="income-amount positive">+¥42.50</span>
-                        </div>
-                        <div class="income-item">
-                            <div class="income-icon response">
-                                <i class="ri-exchange-funds-fill"></i>
-                            </div>
-                            <div class="income-info">
-                                <span class="income-title">削峰响应奖励</span>
-                                <span class="income-time">今日 12:00 · 任务完成</span>
-                            </div>
-                            <span class="income-amount positive">+¥56.80</span>
-                        </div>
-                        <div class="income-item">
-                            <div class="income-icon buy">
-                                <i class="ri-arrow-down-circle-fill"></i>
-                            </div>
-                            <div class="income-info">
-                                <span class="income-title">购电支出</span>
-                                <span class="income-time">昨日 22:15 · 23.2 kWh</span>
-                            </div>
-                            <span class="income-amount negative">-¥11.60</span>
-                        </div>
-                        <div class="income-item">
-                            <div class="income-icon subsidy">
-                                <i class="ri-government-fill"></i>
-                            </div>
-                            <div class="income-info">
-                                <span class="income-title">光伏补贴</span>
-                                <span class="income-time">02月01日 · 月度结算</span>
-                            </div>
-                            <span class="income-amount positive">+¥320.00</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 提现按钮 -->
-                <div class="withdraw-section">
-                    <div class="withdraw-info">
-                        <span>可提现金额</span>
-                        <span class="withdraw-amount">¥2,568.90</span>
-                    </div>
-                    <button class="withdraw-btn">立即提现</button>
-                </div>
-            </div>
-        </div>
-
         <!-- 用户中心页面 -->
         <div id="page-profile" class="page">
             <div class="header transparent">
@@ -911,9 +729,9 @@
                 <i class="ri-line-chart-line"></i>
                 <span>监控</span>
             </div>
-            <div class="tab-item" onclick="showPage('income')">
-                <i class="ri-wallet-3-line"></i>
-                <span>收益</span>
+            <div class="tab-item" onclick="showPage('response')">
+                <i class="ri-exchange-funds-line"></i>
+                <span>响应</span>
             </div>
             <div class="tab-item" onclick="showPage('profile')">
                 <i class="ri-user-line"></i>

@@ -23,7 +23,7 @@ function showPage(pageId) {
         'home': 0,
         'devices': 1,
         'monitor': 2,
-        'income': 3,
+        'response': 3,
         'profile': 4
     };
     
