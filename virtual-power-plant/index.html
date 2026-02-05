@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>虚拟电厂小程序</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- 首页/仪表盘 -->
+        <div id="page-home" class="page active">
+            <div class="header">
+                <div class="header-left">
+                    <i class="ri-apps-line"></i>
+                </div>
+                <div class="header-title">虚拟电厂</div>
+                <div class="header-right">
+                    <i class="ri-notification-3-line"></i>
+                    <span class="badge">3</span>
+                </div>
+            </div>
+            
+            <div class="content">
+                <!-- 用户欢迎卡片 -->
+                <div class="welcome-card">
+                    <div class="welcome-info">
+                        <h2>您好，智能用户</h2>
+                        <p>今日能源状态良好</p>
+                    </div>
+                    <div class="weather-info">
+                        <i class="ri-sun-line"></i>
+                        <span>26°C 晴</span>
+                    </div>
+                </div>
+
+                <!-- 能源概览 -->
+                <div class="section">
+                    <div class="section-header">
+                        <h3>能源概览</h3>
+                        <span class="view-more">更多 <i class="ri-arrow-right-s-line"></i></span>
+                    </div>
+                    <div class="energy-overview">
+                        <div class="energy-card">
+                            <div class="energy-icon solar">
+                                <i class="ri-sun-fill"></i>
+                            </div>
+                            <div class="energy-data">
+                                <span class="energy-value">156.8</span>
+                                <span class="energy-unit">kWh</span>
+                            </div>
+                            <span class="energy-label">今日发电</span>
+                        </div>
+                        <div class="energy-card">
+                            <div class="energy-icon consumption">
+                                <i class="ri-flashlight-fill"></i>
+                            </div>
+                            <div class="energy-data">
+                                <span class="energy-value">89.2</span>
+                                <span class="energy-unit">kWh</span>
+                            </div>
+                            <span class="energy-label">今日用电</span>
+                        </div>
+                        <div class="energy-card">
+                            <div class="energy-icon storage">
+                                <i class="ri-battery-2-charge-fill"></i>
+                            </div>
+                            <div class="energy-data">
+                                <span class="energy-value">78</span>
+                                <span class="energy-unit">%</span>
+                            </div>
+                            <span class="energy-label">储能电量</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 实时功率 -->
+                <div class="section">
+                    <div class="section-header">
+                        <h3>实时功率</h3>
+                        <span class="update-time"><i class="ri-refresh-line"></i> 刚刚更新</span>
+                    </div>
+                    <div class="power-chart-card">
+                        <div class="power-stats">
+                            <div class="power-stat">
+                                <span class="stat-label">发电功率</span>
+                                <span class="stat-value positive">+12.5 kW</span>
+                            </div>
+                            <div class="power-stat">
+                                <span class="stat-label">用电功率</span>
+                                <span class="stat-value negative">-8.3 kW</span>
+                            </div>
+                            <div class="power-stat">
+                                <span class="stat-label">净功率</span>
+                                <span class="stat-value positive">+4.2 kW</span>
+                            </div>
+                        </div>
+                        <div class="chart-placeholder">
+                            <svg viewBox="0 0 300 100" class="line-chart">
+                                <polyline fill="none" stroke="#4CAF50" stroke-width="2"
+                                    points="0,80 30,60 60,70 90,40 120,50 150,30 180,45 210,35 240,25 270,40 300,20"/>
+                                <polyline fill="none" stroke="#FF5722" stroke-width="2"
+                                    points="0,90 30,85 60,80 90,75 120,70 150,65 180,70 210,65 240,60 270,55 300,60"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 快捷功能 -->
+                <div class="section">
+                    <div class="section-header">
+                        <h3>快捷功能</h3>
+                    </div>
+                    <div class="quick-actions">
+                        <div class="action-item" onclick="showPage('devices')">
+                            <div class="action-icon devices">
+                                <i class="ri-cpu-line"></i>
+                            </div>
+                            <span>设备管理</span>
+                        </div>
+                        <div class="action-item" onclick="showPage('monitor')">
+                            <div class="action-icon monitor">
+                                <i class="ri-line-chart-line"></i>
+                            </div>
+                            <span>能源监控</span>
+                        </div>
+                        <div class="action-item" onclick="showPage('response')">
+                            <div class="action-icon response">
+                                <i class="ri-exchange-funds-line"></i>
+                            </div>
+                            <span>需求响应</span>
+                        </div>
+                        <div class="action-item" onclick="showPage('profile')">
+                            <div class="action-icon profile">
+                                <i class="ri-user-line"></i>
+                            </div>
+                            <span>用户中心</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 设备管理页面 -->
+        <div id="page-devices" class="page">
+            <div class="header">
+                <div class="header-left" onclick="showPage('home')">
+                    <i class="ri-arrow-left-line"></i>
+                </div>
+                <div class="header-title">设备管理</div>
+                <div class="header-right">
+                    <i class="ri-add-line"></i>
+                </div>
+            </div>
+            
+            <div class="content">
+                <!-- 设备统计 -->
+                <div class="device-stats">
+                    <div class="device-stat-item">
+                        <span class="stat-number">12</span>
+                        <span class="stat-label">设备总数</span>
+                    </div>
+                    <div class="device-stat-item">
+                        <span class="stat-number online">10</span>
+                        <span class="stat-label">在线设备</span>
+                    </div>
+                    <div class="device-stat-item">
+                        <span class="stat-number offline">2</span>
+                        <span class="stat-label">离线设备</span>
+                    </div>
+                </div>
+
+                <!-- 设备分类 -->
+                <div class="device-categories">
+                    <div class="category-tab active">全部</div>
+                    <div class="category-tab">光伏</div>
+                    <div class="category-tab">储能</div>
+                    <div class="category-tab">充电桩</div>
+                    <div class="category-tab">负荷</div>
+                </div>
+
+                <!-- 设备列表 -->
+                <div class="device-list">
+                    <div class="device-card">
+                        <div class="device-header">
+                            <div class="device-icon solar">
+                                <i class="ri-sun-fill"></i>
+                            </div>
+                            <div class="device-info">
+                                <span class="device-name">光伏阵列 A区</span>
+                                <span class="device-id">PV-2024-001</span>
+                            </div>
+                            <div class="device-status online">在线</div>
+                        </div>
+                        <div class="device-data">
+                            <div class="data-item">
+                                <span class="data-label">当前功率</span>
+                                <span class="data-value">8.5 kW</span>
+                            </div>
+                            <div class="data-item">
+                                <span class="data-label">今日发电</span>
+                                <span class="data-value">45.2 kWh</span>
+                            </div>
+                            <div class="data-item">
+                                <span class="data-label">效率</span>
+                                <span class="data-value">92%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="device-card">
+                        <div class="device-header">
+                            <div class="device-icon storage">
+                                <i class="ri-battery-2-charge-fill"></i>
+                            </div>
+                            <div class="device-info">
+                                <span class="device-name">储能系统 1号</span>
+                                <span class="device-id">ESS-2024-001</span>
+                            </div>
+                            <div class="device-status online">在线</div>
+                        </div>
+                        <div class="device-data">
+                            <div class="data-item">
+                                <span class="data-label">电量</span>
+                                <span class="data-value">78%</span>
+                            </div>
+                            <div class="data-item">
+                                <span class="data-label">功率</span>
+                                <span class="data-value">+2.3 kW</span>
+                            </div>
+                            <div class="data-item">
+                                <span class="data-label">温度</span>
+                                <span class="data-value">28°C</span>
+                            </div>
+                        </div>
+                        <div class="battery-bar">
+                            <div class="battery-fill" style="width: 78%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="device-card">
+                        <div class="device-header">
+                            <div class="device-icon charger">
+                                <i class="ri-charging-pile-fill"></i>
+                            </div>
+                            <div class="device-info">
+                                <span class="device-name">充电桩 B1</span>
+                                <span class="device-id">CP-2024-001</span>
+                            </div>
+                            <div class="device-status charging">充电中</div>
+                        </div>
+                        <div class="device-data">
+                            <div class="data-item">
+                                <span class="data-label">充电功率</span>
+                                <span class="data-value">7.2 kW</span>
+                            </div>
+                            <div class="data-item">
+                                <span class="data-label">已充电量</span>
+                                <span class="data-value">12.5 kWh</span>
+                            </div>
+                            <div class="data-item">
+                                <span class="data-label">预计完成</span>
+                                <span class="data-value">45分钟</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="device-card offline">
+                        <div class="device-header">
+                            <div class="device-icon solar">
+                                <i class="ri-sun-fill"></i>
+                            </div>
+                            <div class="device-info">
+                                <span class="device-name">光伏阵列 B区</span>
+                                <span class="device-id">PV-2024-002</span>
+                            </div>
+                            <div class="device-status offline">离线</div>
+                        </div>
+                        <div class="device-data">
+                            <div class="data-item">
+                                <span class="data-label">最后在线</span>
+                                <span class="data-value">2小时前</span>
+                            </div>
+                            <div class="data-item">
+                                <span class="data-label">故障原因</span>
+                                <span class="data-value">通讯异常</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 能源监控页面 -->
+        <div id="page-monitor" class="page">
+            <div class="header">
+                <div class="header-left" onclick="showPage('home')">
+                    <i class="ri-arrow-left-line"></i>
+                </div>
+                <div class="header-title">能源监控</div>
+                <div class="header-right">
+                    <i class="ri-calendar-line"></i>
+                </div>
+            </div>
+            
+            <div class="content">
+                <!-- 时间筛选 -->
+                <div class="time-filter">
+                    <div class="filter-tab">今日</div>
+                    <div class="filter-tab active">本周</div>
+                    <div class="filter-tab">本月</div>
+                    <div class="filter-tab">本年</div>
+                </div>
+
+                <!-- 能源总览卡片 -->
+                <div class="monitor-summary">
+                    <div class="summary-card generation">
+                        <div class="summary-icon">
+                            <i class="ri-sun-fill"></i>
+                        </div>
+                        <div class="summary-content">
+                            <span class="summary-label">总发电量</span>
+                            <span class="summary-value">1,256.8 <small>kWh</small></span>
+                            <span class="summary-trend positive">
+                                <i class="ri-arrow-up-line"></i> 12.5%
+                            </span>
+                        </div>
+                    </div>
+                    <div class="summary-card consumption">
+                        <div class="summary-icon">
+                            <i class="ri-flashlight-fill"></i>
+                        </div>
+                        <div class="summary-content">
+                            <span class="summary-label">总用电量</span>
+                            <span class="summary-value">892.4 <small>kWh</small></span>
+                            <span class="summary-trend negative">
+                                <i class="ri-arrow-down-line"></i> 5.2%
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 能源流向图 -->
+                <div class="section">
+                    <div class="section-header">
+                        <h3>能源流向</h3>
+                    </div>
+                    <div class="energy-flow-card">
+                        <div class="flow-diagram">
+                            <div class="flow-source">
+                                <div class="flow-node solar">
+                                    <i class="ri-sun-fill"></i>
+                                    <span>光伏</span>
+                                    <span class="flow-value">12.5kW</span>
+                                </div>
+                                <div class="flow-node grid">
+                                    <i class="ri-global-line"></i>
+                                    <span>电网</span>
+                                    <span class="flow-value">0kW</span>
+                                </div>
+                            </div>
+                            <div class="flow-center">
+                                <div class="flow-hub">
+                                    <i class="ri-home-gear-fill"></i>
+                                    <span>能源中心</span>
+                                </div>
+                                <div class="flow-arrows">
+                                    <div class="arrow left"></div>
+                                    <div class="arrow right"></div>
+                                </div>
+                            </div>
+                            <div class="flow-target">
+                                <div class="flow-node load">
+                                    <i class="ri-plug-line"></i>
+                                    <span>负荷</span>
+                                    <span class="flow-value">8.3kW</span>
+                                </div>
+                                <div class="flow-node storage">
+                                    <i class="ri-battery-2-charge-fill"></i>
+                                    <span>储能</span>
+                                    <span class="flow-value">+4.2kW</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 发电曲线 -->
+                <div class="section">
+                    <div class="section-header">
+                        <h3>发电曲线</h3>
+                        <div class="legend">
+                            <span class="legend-item"><i class="dot solar"></i>发电</span>
+                            <span class="legend-item"><i class="dot consumption"></i>用电</span>
+                        </div>
+                    </div>
+                    <div class="chart-card">
+                        <svg viewBox="0 0 320 150" class="area-chart">
+                            <defs>
+                                <linearGradient id="solarGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#4CAF50;stop-opacity:0.3" />
+                                    <stop offset="100%" style="stop-color:#4CAF50;stop-opacity:0" />
+                                </linearGradient>
+                            </defs>
+                            <path fill="url(#solarGradient)" d="M0,130 L0,100 L40,80 L80,60 L120,40 L160,30 L200,35 L240,50 L280,70 L320,90 L320,130 Z"/>
+                            <polyline fill="none" stroke="#4CAF50" stroke-width="2"
+                                points="0,100 40,80 80,60 120,40 160,30 200,35 240,50 280,70 320,90"/>
+                            <polyline fill="none" stroke="#FF5722" stroke-width="2" stroke-dasharray="5,5"
+                                points="0,110 40,100 80,90 120,80 160,85 200,90 240,85 280,95 320,100"/>
+                        </svg>
+                        <div class="chart-labels">
+                            <span>6:00</span>
+                            <span>9:00</span>
+                            <span>12:00</span>
+                            <span>15:00</span>
+                            <span>18:00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 能源统计 -->
+                <div class="section">
+                    <div class="section-header">
+                        <h3>能源统计</h3>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <span class="stat-title">自用率</span>
+                            <div class="stat-circle">
+                                <svg viewBox="0 0 36 36">
+                                    <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                    <path class="circle-fill" stroke="#4CAF50" stroke-dasharray="71, 100"
+                                        d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                </svg>
+                                <span class="percentage">71%</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-title">上网率</span>
+                            <div class="stat-circle">
+                                <svg viewBox="0 0 36 36">
+                                    <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                    <path class="circle-fill" stroke="#2196F3" stroke-dasharray="29, 100"
+                                        d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                </svg>
+                                <span class="percentage">29%</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-title">碳减排</span>
+                            <div class="stat-value-lg">
+                                <span>628</span>
+                                <small>kg CO₂</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 需求响应页面 -->
+        <div id="page-response" class="page">
+            <div class="header">
+                <div class="header-left" onclick="showPage('home')">
+                    <i class="ri-arrow-left-line"></i>
+                </div>
+                <div class="header-title">需求响应</div>
+                <div class="header-right">
+                    <i class="ri-history-line"></i>
+                </div>
+            </div>
+            
+            <div class="content">
+                <!-- 响应状态 -->
+                <div class="response-status-card">
+                    <div class="status-indicator active">
+                        <i class="ri-signal-tower-fill"></i>
+                    </div>
+                    <div class="status-info">
+                        <h3>正在响应中</h3>
+                        <p>削峰响应 · 剩余 1小时32分</p>
+                    </div>
+                    <button class="status-btn">查看详情</button>
+                </div>
+
+                <!-- 可用资源 -->
+                <div class="section">
+                    <div class="section-header">
+                        <h3>可调度资源</h3>
+                    </div>
+                    <div class="resource-cards">
+                        <div class="resource-card">
+                            <div class="resource-icon">
+                                <i class="ri-battery-2-charge-fill"></i>
+                            </div>
+                            <div class="resource-info">
+                                <span class="resource-name">储能系统</span>
+                                <div class="resource-bar">
+                                    <div class="bar-fill" style="width: 78%;"></div>
+                                </div>
+                                <span class="resource-capacity">可放电 45.6 kWh</span>
+                            </div>
+                            <div class="resource-status available">可用</div>
+                        </div>
+                        <div class="resource-card">
+                            <div class="resource-icon">
+                                <i class="ri-temp-cold-line"></i>
+                            </div>
+                            <div class="resource-info">
+                                <span class="resource-name">空调负荷</span>
+                                <div class="resource-bar">
+                                    <div class="bar-fill" style="width: 60%;"></div>
+                                </div>
+                                <span class="resource-capacity">可削减 12.5 kW</span>
+                            </div>
+                            <div class="resource-status available">可用</div>
+                        </div>
+                        <div class="resource-card">
+                            <div class="resource-icon">
+                                <i class="ri-charging-pile-fill"></i>
+                            </div>
+                            <div class="resource-info">
+                                <span class="resource-name">充电桩</span>
+                                <div class="resource-bar">
+                                    <div class="bar-fill" style="width: 40%;"></div>
+                                </div>
+                                <span class="resource-capacity">可调整 8.0 kW</span>
+                            </div>
+                            <div class="resource-status busy">使用中</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 待响应任务 -->
+                <div class="section">
+                    <div class="section-header">
+                        <h3>待响应任务</h3>
+                        <span class="badge-count">2</span>
+                    </div>
+                    <div class="response-task-list">
+                        <div class="response-task">
+                            <div class="task-icon peak">
+                                <i class="ri-arrow-up-double-fill"></i>
+                            </div>
+                            <div class="task-content">
+                                <div class="task-header-row">
+                                    <span class="task-title">削峰响应</span>
+                                    <span class="task-reward">+32元/kWh</span>
+                                </div>
+                                <p class="task-desc">减少用电负荷，响应电网削峰需求</p>
+                                <div class="task-details">
+                                    <span><i class="ri-time-line"></i> 14:00-16:00</span>
+                                    <span><i class="ri-flashlight-line"></i> 预计收益 ¥48</span>
+                                </div>
+                            </div>
+                            <button class="accept-btn">立即响应</button>
+                        </div>
+                        <div class="response-task">
+                            <div class="task-icon valley">
+                                <i class="ri-arrow-down-double-fill"></i>
+                            </div>
+                            <div class="task-content">
+                                <div class="task-header-row">
+                                    <span class="task-title">填谷调度</span>
+                                    <span class="task-reward">+18元/kWh</span>
+                                </div>
+                                <p class="task-desc">增加用电负荷，消纳富余电力</p>
+                                <div class="task-details">
+                                    <span><i class="ri-time-line"></i> 22:00-06:00</span>
+                                    <span><i class="ri-flashlight-line"></i> 预计收益 ¥72</span>
+                                </div>
+                            </div>
+                            <button class="accept-btn outline">预约响应</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 历史响应 -->
+                <div class="section">
+                    <div class="section-header">
+                        <h3>响应历史</h3>
+                        <span class="view-more">更多 <i class="ri-arrow-right-s-line"></i></span>
+                    </div>
+                    <div class="history-list">
+                        <div class="history-item">
+                            <div class="history-date">
+                                <span class="day">05</span>
+                                <span class="month">2月</span>
+                            </div>
+                            <div class="history-info">
+                                <span class="history-title">削峰响应</span>
+                                <span class="history-time">10:00-12:00 · 成功完成</span>
+                            </div>
+                            <span class="history-income">+¥56.80</span>
+                        </div>
+                        <div class="history-item">
+                            <div class="history-date">
+                                <span class="day">04</span>
+                                <span class="month">2月</span>
+                            </div>
+                            <div class="history-info">
+                                <span class="history-title">紧急调频</span>
+                                <span class="history-time">15:30-16:00 · 成功完成</span>
+                            </div>
+                            <span class="history-income">+¥89.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 用户中心页面 -->
+        <div id="page-profile" class="page">
+            <div class="header transparent">
+                <div class="header-left">
+                    <i class="ri-settings-3-line"></i>
+                </div>
+                <div class="header-title"></div>
+                <div class="header-right">
+                    <i class="ri-message-3-line"></i>
+                </div>
+            </div>
+            
+            <div class="content">
+                <!-- 用户信息卡片 -->
+                <div class="profile-hero">
+                    <div class="profile-avatar">
+                        <i class="ri-user-fill"></i>
+                    </div>
+                    <div class="profile-info">
+                        <h2 class="profile-name">智能用户</h2>
+                        <p class="profile-id">ID: VPP20240001</p>
+                        <div class="profile-badge">
+                            <i class="ri-vip-crown-fill"></i>
+                            <span>黄金会员</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 用户数据 -->
+                <div class="profile-stats">
+                    <div class="profile-stat-item">
+                        <span class="stat-value">365</span>
+                        <span class="stat-label">运行天数</span>
+                    </div>
+                    <div class="profile-stat-item">
+                        <span class="stat-value">12</span>
+                        <span class="stat-label">接入设备</span>
+                    </div>
+                    <div class="profile-stat-item">
+                        <span class="stat-value">156</span>
+                        <span class="stat-label">响应次数</span>
+                    </div>
+                </div>
+
+                <!-- 功能菜单 -->
+                <div class="menu-section">
+                    <div class="menu-item">
+                        <div class="menu-icon">
+                            <i class="ri-file-list-3-line"></i>
+                        </div>
+                        <span class="menu-label">我的订单</span>
+                        <i class="ri-arrow-right-s-line"></i>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-icon">
+                            <i class="ri-bill-line"></i>
+                        </div>
+                        <span class="menu-label">电费账单</span>
+                        <i class="ri-arrow-right-s-line"></i>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-icon">
+                            <i class="ri-file-paper-2-line"></i>
+                        </div>
+                        <span class="menu-label">合同管理</span>
+                        <i class="ri-arrow-right-s-line"></i>
+                    </div>
+                </div>
+
+                <div class="menu-section">
+                    <div class="menu-item">
+                        <div class="menu-icon">
+                            <i class="ri-customer-service-2-line"></i>
+                        </div>
+                        <span class="menu-label">客服中心</span>
+                        <i class="ri-arrow-right-s-line"></i>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-icon">
+                            <i class="ri-question-line"></i>
+                        </div>
+                        <span class="menu-label">帮助与反馈</span>
+                        <i class="ri-arrow-right-s-line"></i>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-icon">
+                            <i class="ri-information-line"></i>
+                        </div>
+                        <span class="menu-label">关于我们</span>
+                        <i class="ri-arrow-right-s-line"></i>
+                    </div>
+                </div>
+
+                <div class="menu-section">
+                    <div class="menu-item">
+                        <div class="menu-icon">
+                            <i class="ri-settings-4-line"></i>
+                        </div>
+                        <span class="menu-label">系统设置</span>
+                        <i class="ri-arrow-right-s-line"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部导航 -->
+        <div class="tab-bar">
+            <div class="tab-item active" onclick="showPage('home')">
+                <i class="ri-home-5-fill"></i>
+                <span>首页</span>
+            </div>
+            <div class="tab-item" onclick="showPage('devices')">
+                <i class="ri-cpu-line"></i>
+                <span>设备</span>
+            </div>
+            <div class="tab-item" onclick="showPage('monitor')">
+                <i class="ri-line-chart-line"></i>
+                <span>监控</span>
+            </div>
+            <div class="tab-item" onclick="showPage('response')">
+                <i class="ri-exchange-funds-line"></i>
+                <span>响应</span>
+            </div>
+            <div class="tab-item" onclick="showPage('profile')">
+                <i class="ri-user-line"></i>
+                <span>我的</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
