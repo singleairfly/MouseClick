@@ -1,0 +1,1663 @@
+/* 虚拟电厂小程序样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #1890ff;
+    --primary-gradient: linear-gradient(135deg, #1890ff, #36cfc9);
+    --success-color: #52c41a;
+    --warning-color: #faad14;
+    --danger-color: #ff4d4f;
+    --text-primary: #333;
+    --text-secondary: #666;
+    --text-light: #999;
+    --bg-color: #f5f7fa;
+    --card-bg: #fff;
+    --border-color: #eee;
+    --shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+.app-container {
+    max-width: 414px;
+    margin: 0 auto;
+    background-color: var(--bg-color);
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* 页面 */
+.page {
+    display: none;
+    min-height: 100vh;
+    padding-bottom: 70px;
+}
+
+.page.active {
+    display: block;
+}
+
+/* 头部 */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: linear-gradient(135deg, #1890ff, #36cfc9);
+    color: #fff;
+}
+
+.header.transparent {
+    background: transparent;
+    position: absolute;
+    width: 100%;
+    color: #fff;
+}
+
+.header-left, .header-right {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.header-left i, .header-right i {
+    font-size: 22px;
+}
+
+.header-title {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.header-right .badge {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background: var(--danger-color);
+    color: #fff;
+    font-size: 10px;
+    min-width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
+}
+
+/* 内容区域 */
+.content {
+    padding: 16px;
+}
+
+/* 欢迎卡片 */
+.welcome-card {
+    background: var(--primary-gradient);
+    border-radius: 16px;
+    padding: 20px;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 16px rgba(24, 144, 255, 0.3);
+}
+
+.welcome-info h2 {
+    font-size: 20px;
+    margin-bottom: 4px;
+}
+
+.welcome-info p {
+    opacity: 0.9;
+    font-size: 14px;
+}
+
+.weather-info {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 8px 12px;
+    border-radius: 20px;
+}
+
+.weather-info i {
+    font-size: 20px;
+}
+
+/* 区块 */
+.section {
+    margin-bottom: 20px;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.section-header h3 {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.view-more {
+    font-size: 13px;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.update-time {
+    font-size: 12px;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* 能源概览 */
+.energy-overview {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.energy-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: var(--shadow);
+}
+
+.energy-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.energy-icon i {
+    font-size: 22px;
+    color: #fff;
+}
+
+.energy-icon.solar {
+    background: linear-gradient(135deg, #ffa940, #ff7a45);
+}
+
+.energy-icon.consumption {
+    background: linear-gradient(135deg, #ff4d4f, #f5222d);
+}
+
+.energy-icon.storage {
+    background: linear-gradient(135deg, #36cfc9, #13c2c2);
+}
+
+.energy-icon.income {
+    background: linear-gradient(135deg, #52c41a, #73d13d);
+}
+
+.energy-data {
+    margin-bottom: 4px;
+}
+
+.energy-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.energy-unit {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-left: 2px;
+}
+
+.energy-label {
+    font-size: 13px;
+    color: var(--text-light);
+}
+
+/* 功率卡片 */
+.power-chart-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: var(--shadow);
+}
+
+.power-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px dashed var(--border-color);
+}
+
+.power-stat {
+    text-align: center;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: var(--text-light);
+    display: block;
+    margin-bottom: 4px;
+}
+
+.stat-value {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.stat-value.positive {
+    color: var(--success-color);
+}
+
+.stat-value.negative {
+    color: var(--danger-color);
+}
+
+.chart-placeholder {
+    height: 100px;
+}
+
+.line-chart {
+    width: 100%;
+    height: 100%;
+}
+
+/* 快捷功能 */
+.quick-actions {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: var(--shadow);
+}
+
+.action-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.action-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.action-icon i {
+    font-size: 24px;
+    color: #fff;
+}
+
+.action-icon.devices {
+    background: linear-gradient(135deg, #597ef7, #2f54eb);
+}
+
+.action-icon.monitor {
+    background: linear-gradient(135deg, #36cfc9, #13c2c2);
+}
+
+.action-icon.response {
+    background: linear-gradient(135deg, #ffc53d, #faad14);
+}
+
+.action-icon.income {
+    background: linear-gradient(135deg, #52c41a, #389e0d);
+}
+
+.action-item span {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+/* 任务列表 */
+.task-list {
+    background: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.task-item:last-child {
+    border-bottom: none;
+}
+
+.task-status {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 12px;
+}
+
+.task-status.active {
+    background: var(--success-color);
+    box-shadow: 0 0 0 3px rgba(82, 196, 26, 0.2);
+}
+
+.task-status.pending {
+    background: var(--warning-color);
+}
+
+.task-status.completed {
+    background: var(--text-light);
+}
+
+.task-info {
+    flex: 1;
+}
+
+.task-name {
+    font-size: 14px;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.task-time {
+    font-size: 12px;
+    color: var(--text-light);
+}
+
+.task-reward {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--success-color);
+}
+
+/* =============== 设备管理页面 =============== */
+.device-stats {
+    display: flex;
+    justify-content: space-around;
+    background: var(--primary-gradient);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+    color: #fff;
+}
+
+.device-stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 28px;
+    font-weight: 700;
+    display: block;
+}
+
+.stat-number.online {
+    color: #b7eb8f;
+}
+
+.stat-number.offline {
+    color: #ffccc7;
+}
+
+.device-stat-item .stat-label {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.device-categories {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+}
+
+.category-tab {
+    flex-shrink: 0;
+    padding: 8px 16px;
+    background: var(--card-bg);
+    border-radius: 20px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    box-shadow: var(--shadow);
+}
+
+.category-tab.active {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+.device-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.device-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: var(--shadow);
+}
+
+.device-card.offline {
+    opacity: 0.7;
+}
+
+.device-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.device-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+}
+
+.device-icon i {
+    font-size: 22px;
+    color: #fff;
+}
+
+.device-icon.solar {
+    background: linear-gradient(135deg, #ffa940, #ff7a45);
+}
+
+.device-icon.storage {
+    background: linear-gradient(135deg, #36cfc9, #13c2c2);
+}
+
+.device-icon.charger {
+    background: linear-gradient(135deg, #597ef7, #2f54eb);
+}
+
+.device-info {
+    flex: 1;
+}
+
+.device-name {
+    font-size: 15px;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.device-id {
+    font-size: 12px;
+    color: var(--text-light);
+}
+
+.device-status {
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 10px;
+}
+
+.device-status.online {
+    background: #f6ffed;
+    color: var(--success-color);
+}
+
+.device-status.offline {
+    background: #fff2f0;
+    color: var(--danger-color);
+}
+
+.device-status.charging {
+    background: #e6f7ff;
+    color: var(--primary-color);
+}
+
+.device-data {
+    display: flex;
+    justify-content: space-between;
+}
+
+.data-item {
+    text-align: center;
+}
+
+.data-label {
+    font-size: 11px;
+    color: var(--text-light);
+    display: block;
+    margin-bottom: 4px;
+}
+
+.data-value {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.battery-bar {
+    margin-top: 12px;
+    height: 6px;
+    background: #e8e8e8;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.battery-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #36cfc9, #13c2c2);
+    border-radius: 3px;
+}
+
+/* =============== 能源监控页面 =============== */
+.time-filter {
+    display: flex;
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 4px;
+    margin-bottom: 16px;
+    box-shadow: var(--shadow);
+}
+
+.filter-tab {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    font-size: 13px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: var(--text-secondary);
+}
+
+.filter-tab.active {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+.monitor-summary {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.summary-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    gap: 12px;
+    box-shadow: var(--shadow);
+}
+
+.summary-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.summary-icon i {
+    font-size: 24px;
+    color: #fff;
+}
+
+.summary-card.generation .summary-icon {
+    background: linear-gradient(135deg, #ffa940, #ff7a45);
+}
+
+.summary-card.consumption .summary-icon {
+    background: linear-gradient(135deg, #ff4d4f, #f5222d);
+}
+
+.summary-content {
+    flex: 1;
+}
+
+.summary-label {
+    font-size: 12px;
+    color: var(--text-light);
+    display: block;
+}
+
+.summary-value {
+    font-size: 18px;
+    font-weight: 700;
+    display: block;
+    margin: 4px 0;
+}
+
+.summary-value small {
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.summary-trend {
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.summary-trend.positive {
+    color: var(--success-color);
+}
+
+.summary-trend.negative {
+    color: var(--danger-color);
+}
+
+/* 能源流向 */
+.energy-flow-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: var(--shadow);
+}
+
+.flow-diagram {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flow-source, .flow-target {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.flow-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.flow-node i {
+    font-size: 28px;
+}
+
+.flow-node span {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.flow-value {
+    font-weight: 600;
+    color: var(--text-primary) !important;
+}
+
+.flow-node.solar i {
+    color: #fa8c16;
+}
+
+.flow-node.grid i {
+    color: #1890ff;
+}
+
+.flow-node.load i {
+    color: #f5222d;
+}
+
+.flow-node.storage i {
+    color: #13c2c2;
+}
+
+.flow-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.flow-hub {
+    width: 70px;
+    height: 70px;
+    background: var(--primary-gradient);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+
+.flow-hub i {
+    font-size: 28px;
+}
+
+.flow-hub span {
+    font-size: 10px;
+    margin-top: 2px;
+}
+
+.flow-arrows {
+    display: flex;
+    justify-content: space-between;
+    width: 160px;
+    margin-top: -35px;
+}
+
+.arrow {
+    width: 50px;
+    height: 2px;
+    background: #d9d9d9;
+    position: relative;
+}
+
+.arrow::after {
+    content: '';
+    position: absolute;
+    right: -4px;
+    top: -4px;
+    border: 5px solid transparent;
+    border-left-color: #d9d9d9;
+}
+
+.arrow.left::after {
+    left: -4px;
+    right: auto;
+    border-left-color: transparent;
+    border-right-color: #d9d9d9;
+}
+
+/* 图表 */
+.chart-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: var(--shadow);
+}
+
+.area-chart {
+    width: 100%;
+    height: 120px;
+}
+
+.chart-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    font-size: 11px;
+    color: var(--text-light);
+}
+
+.legend {
+    display: flex;
+    gap: 12px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.dot.solar {
+    background: var(--success-color);
+}
+
+.dot.consumption {
+    background: #ff5722;
+}
+
+/* 统计网格 */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.stat-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+
+.stat-title {
+    font-size: 12px;
+    color: var(--text-light);
+    display: block;
+    margin-bottom: 8px;
+}
+
+.stat-circle {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    margin: 0 auto;
+}
+
+.stat-circle svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.circle-bg {
+    fill: none;
+    stroke: #e8e8e8;
+    stroke-width: 3;
+}
+
+.circle-fill {
+    fill: none;
+    stroke-width: 3;
+    stroke-linecap: round;
+}
+
+.percentage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.stat-value-lg {
+    margin-top: 8px;
+}
+
+.stat-value-lg span {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--success-color);
+}
+
+.stat-value-lg small {
+    display: block;
+    font-size: 11px;
+    color: var(--text-light);
+    margin-top: 4px;
+}
+
+/* =============== 需求响应页面 =============== */
+.response-status-card {
+    background: var(--primary-gradient);
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 16px rgba(24, 144, 255, 0.3);
+}
+
+.status-indicator {
+    width: 56px;
+    height: 56px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.status-indicator i {
+    font-size: 28px;
+    color: #fff;
+}
+
+.status-indicator.active {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 12px rgba(255, 255, 255, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    }
+}
+
+.status-info {
+    flex: 1;
+    color: #fff;
+}
+
+.status-info h3 {
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
+.status-info p {
+    font-size: 13px;
+    opacity: 0.9;
+}
+
+.status-btn {
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    color: #fff;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+/* 资源卡片 */
+.resource-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.resource-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: var(--shadow);
+}
+
+.resource-icon {
+    width: 48px;
+    height: 48px;
+    background: #f0f5ff;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.resource-icon i {
+    font-size: 24px;
+    color: var(--primary-color);
+}
+
+.resource-info {
+    flex: 1;
+}
+
+.resource-name {
+    font-size: 14px;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.resource-bar {
+    height: 6px;
+    background: #e8e8e8;
+    border-radius: 3px;
+    margin-bottom: 4px;
+}
+
+.bar-fill {
+    height: 100%;
+    background: var(--primary-gradient);
+    border-radius: 3px;
+}
+
+.resource-capacity {
+    font-size: 12px;
+    color: var(--text-light);
+}
+
+.resource-status {
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 10px;
+}
+
+.resource-status.available {
+    background: #f6ffed;
+    color: var(--success-color);
+}
+
+.resource-status.busy {
+    background: #fffbe6;
+    color: var(--warning-color);
+}
+
+/* 响应任务 */
+.badge-count {
+    background: var(--danger-color);
+    color: #fff;
+    font-size: 12px;
+    min-width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 6px;
+}
+
+.response-task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.response-task {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: var(--shadow);
+}
+
+.task-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: left;
+    margin-right: 12px;
+}
+
+.task-icon i {
+    font-size: 22px;
+    color: #fff;
+}
+
+.task-icon.peak {
+    background: linear-gradient(135deg, #ff4d4f, #f5222d);
+}
+
+.task-icon.valley {
+    background: linear-gradient(135deg, #52c41a, #389e0d);
+}
+
+.task-content {
+    overflow: hidden;
+}
+
+.task-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.task-title {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.task-reward {
+    font-size: 14px;
+    color: var(--success-color);
+    font-weight: 600;
+}
+
+.task-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+
+.task-details {
+    display: flex;
+    gap: 16px;
+    font-size: 12px;
+    color: var(--text-light);
+}
+
+.task-details i {
+    margin-right: 4px;
+}
+
+.accept-btn {
+    margin-top: 12px;
+    width: 100%;
+    padding: 10px;
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.accept-btn.outline {
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+/* 历史列表 */
+.history-list {
+    background: var(--card-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.history-item {
+    display: flex;
+    align-items: center;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.history-item:last-child {
+    border-bottom: none;
+}
+
+.history-date {
+    width: 44px;
+    height: 44px;
+    background: #f0f5ff;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+}
+
+.history-date .day {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--primary-color);
+    line-height: 1;
+}
+
+.history-date .month {
+    font-size: 10px;
+    color: var(--text-light);
+}
+
+.history-info {
+    flex: 1;
+}
+
+.history-title {
+    font-size: 14px;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.history-time {
+    font-size: 12px;
+    color: var(--text-light);
+}
+
+.history-income {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--success-color);
+}
+
+/* =============== 收益中心页面 =============== */
+.income-hero-card {
+    background: var(--primary-gradient);
+    border-radius: 16px;
+    padding: 24px;
+    color: #fff;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 16px rgba(24, 144, 255, 0.3);
+}
+
+.income-label {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.income-total {
+    margin: 8px 0 16px;
+}
+
+.income-total .currency {
+    font-size: 20px;
+}
+
+.income-total .amount {
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.income-breakdown {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    padding: 12px;
+}
+
+.breakdown-item {
+    flex: 1;
+    text-align: center;
+}
+
+.breakdown-label {
+    font-size: 12px;
+    opacity: 0.8;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.breakdown-value {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.breakdown-divider {
+    width: 1px;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* 周期选择 */
+.period-selector {
+    display: flex;
+    gap: 8px;
+}
+
+.period-selector span {
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    color: var(--text-light);
+    cursor: pointer;
+}
+
+.period-selector span.active {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+/* 柱状图 */
+.income-chart-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 20px 16px;
+    box-shadow: var(--shadow);
+}
+
+.bar-chart {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 120px;
+}
+
+.bar-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+.bar-item .bar {
+    width: 24px;
+    background: linear-gradient(180deg, #36cfc9, #13c2c2);
+    border-radius: 4px 4px 0 0;
+    margin-bottom: 8px;
+}
+
+.bar-item.active .bar {
+    background: linear-gradient(180deg, #1890ff, #096dd9);
+}
+
+.bar-label {
+    font-size: 11px;
+    color: var(--text-light);
+}
+
+/* 收益列表 */
+.income-list {
+    background: var(--card-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.income-item {
+    display: flex;
+    align-items: center;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.income-item:last-child {
+    border-bottom: none;
+}
+
+.income-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+}
+
+.income-icon i {
+    font-size: 20px;
+    color: #fff;
+}
+
+.income-icon.sell {
+    background: linear-gradient(135deg, #52c41a, #389e0d);
+}
+
+.income-icon.response {
+    background: linear-gradient(135deg, #1890ff, #096dd9);
+}
+
+.income-icon.buy {
+    background: linear-gradient(135deg, #ff4d4f, #f5222d);
+}
+
+.income-icon.subsidy {
+    background: linear-gradient(135deg, #722ed1, #531dab);
+}
+
+.income-info {
+    flex: 1;
+}
+
+.income-title {
+    font-size: 14px;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.income-time {
+    font-size: 12px;
+    color: var(--text-light);
+}
+
+.income-amount {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.income-amount.positive {
+    color: var(--success-color);
+}
+
+.income-amount.negative {
+    color: var(--danger-color);
+}
+
+/* 提现区域 */
+.withdraw-section {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
+    box-shadow: var(--shadow);
+}
+
+.withdraw-info span:first-child {
+    font-size: 13px;
+    color: var(--text-secondary);
+    display: block;
+    margin-bottom: 4px;
+}
+
+.withdraw-amount {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.withdraw-btn {
+    padding: 10px 24px;
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* =============== 用户中心页面 =============== */
+#page-profile .content {
+    padding-top: 0;
+}
+
+.profile-hero {
+    background: var(--primary-gradient);
+    padding: 60px 20px 30px;
+    text-align: center;
+    color: #fff;
+    margin: 0 -16px 20px;
+}
+
+.profile-avatar {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 12px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+.profile-avatar i {
+    font-size: 40px;
+}
+
+.profile-name {
+    font-size: 20px;
+    margin-bottom: 4px;
+}
+
+.profile-id {
+    font-size: 13px;
+    opacity: 0.8;
+    margin-bottom: 12px;
+}
+
+.profile-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(255, 215, 0, 0.3);
+    padding: 6px 12px;
+    border-radius: 16px;
+    font-size: 12px;
+}
+
+.profile-badge i {
+    color: gold;
+}
+
+.profile-stats {
+    display: flex;
+    justify-content: space-around;
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+    box-shadow: var(--shadow);
+}
+
+.profile-stat-item {
+    text-align: center;
+}
+
+.profile-stat-item .stat-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary-color);
+    display: block;
+}
+
+.profile-stat-item .stat-label {
+    font-size: 12px;
+    color: var(--text-light);
+}
+
+/* 菜单 */
+.menu-section {
+    background: var(--card-bg);
+    border-radius: 12px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border-color);
+    cursor: pointer;
+}
+
+.menu-item:last-child {
+    border-bottom: none;
+}
+
+.menu-icon {
+    width: 36px;
+    height: 36px;
+    background: #f0f5ff;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+}
+
+.menu-icon i {
+    font-size: 18px;
+    color: var(--primary-color);
+}
+
+.menu-label {
+    flex: 1;
+    font-size: 14px;
+}
+
+.menu-item > i {
+    color: var(--text-light);
+}
+
+/* =============== 底部导航 =============== */
+.tab-bar {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 414px;
+    background: var(--card-bg);
+    display: flex;
+    padding: 8px 0;
+    padding-bottom: calc(8px + env(safe-area-inset-bottom));
+    box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.08);
+    z-index: 1000;
+}
+
+.tab-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    color: var(--text-light);
+    padding: 4px 0;
+}
+
+.tab-item i {
+    font-size: 22px;
+}
+
+.tab-item span {
+    font-size: 11px;
+}
+
+.tab-item.active {
+    color: var(--primary-color);
+}
+
+/* 动画 */
+.page {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* 响应式 */
+@media (max-width: 414px) {
+    .app-container {
+        max-width: 100%;
+    }
+    
+    .tab-bar {
+        max-width: 100%;
+    }
+}
