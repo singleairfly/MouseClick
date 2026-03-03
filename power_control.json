@@ -1,0 +1,28 @@
+{
+  "power_control_settings": [
+    {
+      "time_period": {
+        "start": "00:00",
+        "end": "08:00"
+      },
+      "power_value": 100,
+      "charge_discharge_status": "charging"
+    },
+    {
+      "time_period": {
+        "start": "08:00",
+        "end": "18:00"
+      },
+      "power_value": 200,
+      "charge_discharge_status": "discharging"
+    },
+    {
+      "time_period": {
+        "start": "18:00",
+        "end": "23:59"
+      },
+      "power_value": 150,
+      "charge_discharge_status": "charging"
+    }
+  ]
+}
